@@ -20,7 +20,27 @@ if(submitButton) {
 
 var navLinks = document.getElementsByClassName("nav-link");
 for (var i = 0; i < navLinks.length; i++) {
-  if (navLinks[i].innerHTML == "Products") {
-    navLinks[i].innerHTML = "Interests";
-  }
+    if (navLinks[i].innerHTML == "Products") {
+        navLinks[i].innerHTML = "Interests";
+    }
+    if (navLinks[i].innerHTML == "Contact Us") {
+        let humanLink = document.createElement('li');
+        let icon = document.createElement('i');
+        icon.classList.add('fas', 'fa-users');
+        humanLink.appendChild(icon);
+        let humanText = document.createTextNode(" Human Resources");
+        humanLink.appendChild(humanText);
+        navLinks[i].parentNode.insertBefore(humanLink, navLinks[i]);
+    }
 }
+
+let navbar = document.createElement('nav');
+navbar.className = "navbar fixed-bottom navbar-light bg-light";
+let division = document.createElement("div");
+division.className = "container-fluid";
+let copyright = document.createElement("a");
+copyright.className = "navbar-brand";
+copyright.innerHTML = "&#169 Amelia 2023";
+division.appendChild(copyright);
+navbar.appendChild(division);
+document.body.appendChild(navbar);
