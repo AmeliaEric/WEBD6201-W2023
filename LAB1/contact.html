@@ -5,6 +5,7 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Contact Us</title>
+    <link rel="stylesheet" href="./style/style.css" />
     <link 
         rel="stylesheet" 
         href="./node_modules/bootstrap/dist/css/bootstrap.min.css"
@@ -15,23 +16,21 @@
     />
 </head>
 <body>
-    <ul class="nav nav-tabs">
-        <li class="nav-item">
-          <a class="nav-link" href="index.html">Home</a>
-        </li>
-        <li class="nav-item">
-          <a class="nav-link" href="product.html">Products</a>
-        </li>
-        <li class="nav-item">
-          <a class="nav-link" href="services.html">Services</a>
-        </li>
-        <li class="nav-item">
-          <a class="nav-link" href="about.html">About Us</a>
-        </li>
-        <li class="nav-item">
-            <a class="nav-link active" href="#">Contact Us</a>
-        </li>
-    </ul>
+    <nav class="navbar navbar-expand-lg navbar-light bg-light">
+        <a class="navbar-brand" href="#">WEBD - Client Side</a>
+        <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNavAltMarkup" aria-controls="navbarNavAltMarkup" aria-expanded="false" aria-label="Toggle navigation">
+          <span class="navbar-toggler-icon"></span>
+        </button>
+        <div class="collapse navbar-collapse" id="navbarNavAltMarkup">
+          <div class="navbar-nav">
+            <a class="nav-item nav-link" href="./index.html">Home <span class="sr-only">(current)</span></a>
+            <a class="nav-item nav-link" href="./product.html">Products</a>
+            <a class="nav-item nav-link" href="./services.html">Services</a>
+            <a class="nav-item nav-link" href="./about.html">About Us</a>
+            <a class="nav-item nav-link active" href="#">Contact Us</a>
+          </div>
+        </div>
+      </nav>
     <form>
         <div class="form-row">
           <div class="col-md-4 mb-3">
