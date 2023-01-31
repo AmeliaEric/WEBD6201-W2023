@@ -4,8 +4,10 @@ Date: January 31st, 2022
 Student ID: 100818139
 ***************************/
 
-
-//Takes in information from the contact form, displays it to the console, and then goes to the index.html page.
+/*
+ *Takes in information from the contact form, displays it to the console, and then goes to the index.html page.
+ * @param {event} e
+ */
 function timeRedirect(e) {
     let contactFirst = document.getElementById('FirstName01').value;
     let contactLast = document.getElementById('LastName01').value;
