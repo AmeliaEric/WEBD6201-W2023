@@ -9,13 +9,20 @@ Student ID: 100818139
  * @param {event} e
  */
 function timeRedirect(e) {
+    // Setting up the variable to hold the first name collected
     let contactFirst = document.getElementById('FirstName01').value;
+    // Setting up the variable to hold the last name collected
     let contactLast = document.getElementById('LastName01').value;
+    // Setting up the variable to hold the phone number collected
     let contactNumber = document.getElementById('Contact01').value;
+    // Setting up the variable to hold the email collected
     let contactAddress = document.getElementById('Email01').value;
+    // Setting up the variable to hold the short message collected
     let contactMessage = document.getElementById('Message01').value;
+    // SGiving the console the information formatted nicley to output
     console.log("Name: " + contactFirst + " " + contactLast + " \nContact Number: " + contactNumber + " \nEmail Address: " + contactAddress + " \nShort Message: " + contactMessage);
     e.preventDefault();
+    // Works to change the current page to the home page after 3 seconds.
     setTimeout(function () { 
         window.location.href = "index.html";
     }, 3000);
