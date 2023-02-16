@@ -1,0 +1,87 @@
+<!--**********HEADER**********
+Name: Amelia Eric-Markovic
+Date: February 16th, 2023
+Student ID: 100818139
+*************************** -->
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <!--Title of the Page-->
+    <title>Register</title>
+    <!--Link to the Style CSS-->
+    <link rel="stylesheet" href="./style/style.css" />
+    <!--Link to Bootstrap-->
+    <link 
+        rel="stylesheet" 
+        href="./node_modules/bootstrap/dist/css/bootstrap.min.css"
+    />
+    <!--Link to FontAwesome-->
+    <link 
+        rel="stylesheet" 
+        href="./node_modules/@fortawesome/fontawesome-free/css/all.min.css"
+    />
+</head>
+<body>
+  <!--Navbar class/Start of Navbar-->
+    <nav class="navbar navbar-expand-lg navbar-light bg-light">
+      <!--Title for the Navbar-->
+        <a class="navbar-brand" href="#">WEBD - Client Side</a>
+        <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNavAltMarkup" aria-controls="navbarNavAltMarkup" aria-expanded="false" aria-label="Toggle navigation">
+          <span class="navbar-toggler-icon"></span>
+        </button>
+        <!--All of the Navbar links to pages-->
+        <div class="collapse navbar-collapse" id="navbarNavAltMarkup">
+          <div class="navbar-nav">
+            <a class="nav-item nav-link" href="./index.html">Home <span class="sr-only">(current)</span></a>
+            <a class="nav-item nav-link" href="./product.html">Products</a>
+            <a class="nav-item nav-link" href="./services.html">Services</a>
+            <a class="nav-item nav-link" href="./about.html">About Us</a>
+            <a class="nav-item nav-link" href="./contact.html">Contact Us</a>
+            <a class="nav-item nav-link active" href="#">Login</a>
+          </div>
+        </div>
+      </nav>
+    <form>
+      <!-- THIS CONTACT FORM WAS PROVIDED BY BOOTSTRAP.COM AS SHOWN IN CLASS-->
+      <!--Div for the contact form-->
+        <div class="form-row">
+          <!--Div for the First Name Intake-->
+          <div class="col-md-4 mb-3">
+            <!--Label and Input-->
+            <label for="FirstNamea">First name</label>
+            <input type="text" class="form-control" id="FirstName01" placeholder="First name" required>
+          </div>
+          <!--Div for the Last Name Intake-->
+          <div class="col-md-4 mb-3">
+            <!--Label and Input-->
+            <label for="LastNamea">Last name</label>
+            <input type="text" class="form-control" id="LastName01" placeholder="Last name" required>
+          </div>
+          <!--Div for the Contact Number Intake-->
+          <div class="col-md-6 mb-3">
+            <!--Label and Input-->
+            <label for="Contacta">Contact Number</label>
+            <input type="text" class="form-control" id="Contact01" placeholder="Contact Number" required>
+          </div>
+          <!--Div for the Email Address Intake-->
+          <div class="col-md-3 mb-3">
+            <!--Label and Input-->
+            <label for="Emaila">Email Address</label>
+            <input type="text" class="form-control" id="Email01" placeholder="Email" required>
+          </div>
+          <!--Section for the Short Message Intake-->
+            <label for="Messagea">Short Message</label>
+            <!--Text Area for input-->
+            <textarea class="form-control" id="Message01" rows="3"></textarea>
+        </div>
+        <!--Submit button for the form-->
+        <button id="submit-button"class="btn btn-primary" type="submit">Submit form</button>
+      </form>
+      </script>
+      <!--Adding in the Javascript connection-->
+      <script src="./scripts/app.js"></script>
+</body>
+</html>
