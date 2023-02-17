@@ -140,5 +140,39 @@ if (document.title === 'Home') {
     aboutDiv.innerHTML = aboutMessage;
 }
 
-
-
+// select the Login link
+var loginLink = $('#btnLogin');
+if (loginLink) {
+    // bind a click event handler
+    loginLink.click(function (e) {
+        // prevent the default submit action (stay on the page)
+        e.preventDefault();
+        // get the username and password input values
+        var username = $('#Username01').val();
+        var password = $('#Password01').val();
+        
+        if (username && password) { // if both fields are not empty
+            // create a new list item with the username
+            var usernameItem = $('<li class="nav-item navbar-text">' + username + '</li>');
+            // insert the new list item after the Contact Us link
+            $('.navbar-nav .nav-link[href="./contact.html"]').parent().after(usernameItem);
+            // change the Login link to a Logout link
+            // Calling all of the "nav-link" class element
+            let navLinks = document.getElementsByClassName("nav-link");
+            // Loops through all of the element in the nodelists
+            for (let i = 0; i < navLinks.length; i++) {
+                // Checks the value/text of the element is "Product"
+                if (navLinks[i].innerHTML == "Login" || navLinks[i].innerHTML == "Logout") {
+                    // Changes the text to be "Interests"
+                    if (loginLink.text() == "Login") {
+                        navLinks[i].innerHTML = "Logout";
+                    } else {
+                        navLinks[i].innerHTML = "Login";
+                    }
+                }
+            }
+            
+        }
+    });
+}
+  

@@ -23,6 +23,11 @@ Student ID: 100818139
         rel="stylesheet" 
         href="./node_modules/@fortawesome/fontawesome-free/css/all.min.css"
     />
+    <script
+			src="https://code.jquery.com/jquery-3.6.3.min.js"
+			integrity="sha256-pvPw+upLPUjgMXY0G+8O0xUf+/Im1MZjXxxgOcBQBXU="
+			crossorigin="anonymous"
+		></script>
 </head>
 <body>
   <!--Navbar class/Start of Navbar-->
@@ -53,10 +58,9 @@ Student ID: 100818139
           <label for="Passworda" class="form-label">Enter your password</label>
           <input type="password" class="form-control" id="Password01">
         </div>
-        <button type="submit" class="btn btn-primary">Login</button>
+        <button type="submit" class="btn btn-primary" id="btnLogin">Login</button>
         <p>Don't have an account? <a href="./register.html">Register Here!</a></p>
       </form>
-      </script>
       <!--Adding in the Javascript connection-->
       <script src="./scripts/app.js"></script>
 </body>
