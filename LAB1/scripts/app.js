@@ -140,24 +140,26 @@ if (document.title === 'Home') {
     aboutDiv.innerHTML = aboutMessage;
 }
 
+
+/*****************LAB 2 CODE*****************/
+//LOGIN PAGE
 // select the Login link
-var loginLink = $('#btnLogin');
+let loginLink = $('#btnLogin');
 if (loginLink) {
     // bind a click event handler
     loginLink.click(function (e) {
         // prevent the default submit action (stay on the page)
         e.preventDefault();
         // get the username and password input values
-        var username = $('#Username01').val();
-        var password = $('#Password01').val();
+        let username = $('#Username01').val();
+        let password = $('#Password01').val();
         
         if (username && password) { // if both fields are not empty
             // create a new list item with the username
-            var usernameItem = $('<li class="nav-item navbar-text">' + username + '</li>');
+            let usernameItem = $('<li class="nav-item navbar-text">' + username + '</li>');
             // insert the new list item after the Contact Us link
-            $('.navbar-nav .nav-link[href="./contact.html"]').parent().after(usernameItem);
+            $(usernameItem).insertAfter($('.navbar-nav .nav-link[href="./contact.html"]'));
             // change the Login link to a Logout link
-            // Calling all of the "nav-link" class element
             let navLinks = document.getElementsByClassName("nav-link");
             // Loops through all of the element in the nodelists
             for (let i = 0; i < navLinks.length; i++) {
@@ -175,4 +177,77 @@ if (loginLink) {
         }
     });
 }
+
+
+// REGISTER PAGE
+// Get the navigation bar element
+let firstNameGroup = $("#first-group");
+
+// Create the error message div
+let errorDivision = document.createElement("div");
+errorDivision.id = "ErrorMessage";
+errorDivision.style.display = "none";
+
+// Insert the error message div after the navigation bar div
+$(errorDivision).insertBefore(firstNameGroup);
+
+// Get references to the first name and last name input elements
+let firstNameInput = $('#inputFirst');
+let lastNameInput = $('#inputLast');
+
+// if the submit button is on the page
+if ($("#btnRegSubmit")) {
+  // click function that calls a callback function
+  $("#btnRegSubmit").click(function (e) {
+    // prevent the default submit action (stay on the page)
+    e.preventDefault();
+    validateInputs() 
+  });
+}
+
+// Function to validate the input values and display an error message if needed
+function validateInputs() {
+  // Get the current input values
+  let firstNameValue = firstNameInput.val();
+  let lastNameValue = lastNameInput.val();
   
+  // Check if either input value is less than 2 characters long
+  if (firstNameValue.length < 2 || lastNameValue.length < 2) {
+    // Display an error message at the top of the page
+    errorDivision.textContent = 'First Name and Last Name must be at least 2 characters long';
+    errorDivision.style.display = "block";
+  } else {
+    // Hide the error message if both inputs are valid
+    errorDivision.style.display = "none";
+  }
+}
+// Function to check the username is valid
+function validateUsername() {
+    // Setting the text box to a variable
+    let usernameInput = document.getElementById('usernameInput');
+    // Setting the error label to a variable
+    let usernameError = document.getElementById('usernameError');
+    // Presetting the background colour to white
+    let backgroundColor = "#ffffff";
+    // Making a blank error message variable
+    let usernameErrorMessage = "";
+    // Defining the REGEX for the username requirements
+    let usernameRegex = '^[a-zA-Z][a-zA-Z0-9-_\.]{8,20}$';
+    // Checks if the username is less than 8 characters in length
+    if(usernameInput.value.length < 8) {
+        // Sets the error message and light red error colour
+        usernameErrorMessage = "Username must be at least 8 characters.";
+    // Checks if the username is greater than 20 characters in length
+    }else if(usernameInput.value.length > 20) {
+        // Sets the error message and light red error colour
+        usernameErrorMessage = "Username must be less than 20 characters.";
+    // Checks if the username out of the REGEX bounds
+    } else if(!usernameInput.value.match(usernameRegex)) {
+        // Sets the error message and light red error colour
+        usernameErrorMessage = "Username cannot contain spaces.";
+        backgroundColor = "#e5989b";
+    }
+    // Sets the error message and the background colour
+    usernameError.innerHTML = usernameErrorMessage;
+    usernameInput.style.backgroundColor = backgroundColor;
+}
