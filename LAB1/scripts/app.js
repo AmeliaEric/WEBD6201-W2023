@@ -187,67 +187,154 @@ let firstNameGroup = $("#first-group");
 let errorDivision = document.createElement("div");
 errorDivision.id = "ErrorMessage";
 errorDivision.style.display = "none";
-
+let errorMessage = "";
 // Insert the error message div after the navigation bar div
 $(errorDivision).insertBefore(firstNameGroup);
 
-// Get references to the first name and last name input elements
-let firstNameInput = $('#inputFirst');
-let lastNameInput = $('#inputLast');
-
-// if the submit button is on the page
-if ($("#btnRegSubmit")) {
-  // click function that calls a callback function
-  $("#btnRegSubmit").click(function (e) {
+// TODO:FIX THE FUNCTION STATEMENT 
+// Add a submit event listener to the form
+$('#register-button').on('click', function(event) {
+    // Prevent the default form submission
+    event.preventDefault();
     // prevent the default submit action (stay on the page)
+    let errorMessage = "";
+    errorDivision.innerHTML = "";
     e.preventDefault();
-    validateInputs() 
-  });
-}
+    errorMessage += validateInputs();
+    errorMessage += validateUsername();
+    errorMessage += validateEmail(); 
+    errorMessage += validatePasswords();
+    if (errorMessage.length > 0)
+    {
+        errorDivision.style.display = "block";
+        errorDivision.innerHTML = errorMessage;
+    }
+    else{
+        errorDivision.style.display = "none";
+        const registerFormUser = new User(
+            // get the first name input
+            $("#inputFirst").val(), 
+            // get the last name input
+            $("#inputLast").val(),
+            // get the username input
+            $("#inputUsername").val(),
+            // get the email input
+            $("#inputEmail").val(),
+            // get the password input
+            $("#inputPassword").val()
+            )
+        // debug statement for object
+        console.log(`UserDetails: ${registerFormUser.displayUser()}`)
+    }
+    console.log(errorMessage);
+    console.log("none");
+    
+});
+
 
 // Function to validate the input values and display an error message if needed
 function validateInputs() {
-  // Get the current input values
-  let firstNameValue = firstNameInput.val();
-  let lastNameValue = lastNameInput.val();
+ // Get references to the first name and last name input elements
+  let inputErrorMessage = "";
+  let firstNameValue = $('#inputFirst').val();
+  let lastNameValue = $('#inputLast').val();
   
   // Check if either input value is less than 2 characters long
   if (firstNameValue.length < 2 || lastNameValue.length < 2) {
     // Display an error message at the top of the page
-    errorDivision.textContent = 'First Name and Last Name must be at least 2 characters long';
-    errorDivision.style.display = "block";
+    inputErrorMessage += " First Name and Last Name must be at least 2 characters long.";  
+    console.log("First name or last name error");
   } else {
-    // Hide the error message if both inputs are valid
-    errorDivision.style.display = "none";
+    console.log("No First name or last name error");
   }
+  return inputErrorMessage;
 }
 // Function to check the username is valid
 function validateUsername() {
     // Setting the text box to a variable
-    let usernameInput = document.getElementById('usernameInput');
-    // Setting the error label to a variable
-    let usernameError = document.getElementById('usernameError');
-    // Presetting the background colour to white
-    let backgroundColor = "#ffffff";
-    // Making a blank error message variable
+    let usernameInput = $('#inputUsername').val();
     let usernameErrorMessage = "";
     // Defining the REGEX for the username requirements
     let usernameRegex = '^[a-zA-Z][a-zA-Z0-9-_\.]{8,20}$';
     // Checks if the username is less than 8 characters in length
-    if(usernameInput.value.length < 8) {
+    if(usernameInput.length < 8) {
         // Sets the error message and light red error colour
-        usernameErrorMessage = "Username must be at least 8 characters.";
+        usernameErrorMessage += " Username must be at least 8 characters.";
+        console.log("username error 8");
     // Checks if the username is greater than 20 characters in length
-    }else if(usernameInput.value.length > 20) {
+    }else if(usernameInput.length > 20) {
         // Sets the error message and light red error colour
-        usernameErrorMessage = "Username must be less than 20 characters.";
+        usernameErrorMessage += " Username must be less than 20 characters.";
+        console.log("username error 20");
     // Checks if the username out of the REGEX bounds
-    } else if(!usernameInput.value.match(usernameRegex)) {
+    } else if(!usernameInput.match(usernameRegex)) {
         // Sets the error message and light red error colour
-        usernameErrorMessage = "Username cannot contain spaces.";
-        backgroundColor = "#e5989b";
+        usernameErrorMessage += " Username cannot contain spaces.";
+        console.log("username error");
     }
-    // Sets the error message and the background colour
-    usernameError.innerHTML = usernameErrorMessage;
-    usernameInput.style.backgroundColor = backgroundColor;
+    return usernameErrorMessage;
+
+}
+
+// Function to validate the email input value and display an error message if needed
+function validateEmail() {
+  // Get a reference to the email input element and the error message div
+  let emailValue = $('#inputEmail').val();
+  let emailErrorMessage = "";
+  // Check if the email value is at least 8 characters long and contains an @ symbol
+  if (emailValue.length < 8 || emailValue.indexOf('@') === -1) {
+    // Display an error message in the error message div
+    emailErrorMessage += " Email address must be at least 8 characters long and contain an @ symbol.";
+    console.log("email error");
+  } else {
+    console.log("no email error");
+  }
+  return emailErrorMessage;
+}
+
+// Function to validate the input values and display an error message if needed
+function validatePasswords() {
+    // Get the current input values
+    let passwordValue = $('#inputPassword').val();
+    let confirmPasswordValue = $('#inputPassword2').val();
+    let passwordsErrorMessage = "";
+    // Check if either input value is less than 6 characters long
+    if (passwordValue.length < 6 || confirmPasswordValue.length < 6) {
+      // Display an error message in the error message div
+      passwordsErrorMessage += "Passwords must be at least 6 characters long";
+    } 
+    // Check if the passwords match
+    else if (passwordValue !== confirmPasswordValue) {
+      // Display an error message in the error message div
+      passwordsErrorMessage += "Passwords do not match";
+    }
+    return passwordsErrorMessage;
+}
+
+class User {
+    /**
+     * User Class that creates a new user from the data from the form on the Registration Page.
+     * @param {string} firstName
+     * @param {string} lastName
+     * @param {string} username
+     * @param {string} email
+     * @param {string} password
+     */
+    constructor(firstName, lastName, username, email, password) {
+        this.firstName = firstName;
+        this.lastName = lastName;
+        this.username = username;
+        this.email = email;
+        this.password = password;
+    }
+    /**
+     * @property {function} displayUser Prints users details: user name, username, email, and password
+     * @returns {string}
+     */
+    displayUser() {
+        return `Name: ${this.firstName}${this.lastName}
+        Username: ${this.username}
+        Email: ${this.email}
+        Password: ${this.password}`
+   }
 }
