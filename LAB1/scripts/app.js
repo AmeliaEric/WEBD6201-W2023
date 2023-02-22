@@ -3,7 +3,6 @@ Name: Amelia Eric-Markovic
 Date: January 31st, 2022
 Student ID: 100818139
 ***************************/
-
 /*
  *Takes in information from the contact form, displays it to the console, and then goes to the index.html page.
  * @param {event} e
@@ -193,42 +192,39 @@ $(errorDivision).insertBefore(firstNameGroup);
 
 // TODO:FIX THE FUNCTION STATEMENT 
 // Add a submit event listener to the form
-$('#register-button').on('click', function(event) {
-    // Prevent the default form submission
-    event.preventDefault();
-    // prevent the default submit action (stay on the page)
-    let errorMessage = "";
-    errorDivision.innerHTML = "";
-    e.preventDefault();
-    errorMessage += validateInputs();
-    errorMessage += validateUsername();
-    errorMessage += validateEmail(); 
-    errorMessage += validatePasswords();
-    if (errorMessage.length > 0)
-    {
-        errorDivision.style.display = "block";
-        errorDivision.innerHTML = errorMessage;
-    }
-    else{
-        errorDivision.style.display = "none";
-        const registerFormUser = new User(
-            // get the first name input
-            $("#inputFirst").val(), 
-            // get the last name input
-            $("#inputLast").val(),
-            // get the username input
-            $("#inputUsername").val(),
-            // get the email input
-            $("#inputEmail").val(),
-            // get the password input
-            $("#inputPassword").val()
-            )
-        // debug statement for object
-        console.log(`UserDetails: ${registerFormUser.displayUser()}`)
-    }
-    console.log(errorMessage);
-    console.log("none");
-    
+$(document).ready(function() {
+    $('#btnRegSubmit').on('click', function(e) {
+        // Prevent the default form submission
+        e.preventDefault();
+        // prevent the default submit action (stay on the page)
+        let errorMessage = "";
+        errorDivision.innerHTML = "";
+        e.preventDefault();
+        errorMessage += validateInputs();
+        errorMessage += validateEmail(); 
+        errorMessage += validatePasswords();
+        if (errorMessage.length > 0)
+        {
+            errorDivision.style.display = "block";
+            errorDivision.innerHTML = errorMessage;
+        }
+        else{
+            errorDivision.style.display = "none";
+            const registerFormUser = new User(
+                // get the first name input
+                $("#inputFirst").val(), 
+                // get the last name input
+                $("#inputLast").val(),
+                // get the email input
+                $("#inputEmail").val(),
+                // get the password input
+                $("#inputPassword").val()
+                )
+            // debug statement for object
+            console.log(`UserDetails: ${registerFormUser.displayUser()}`)
+        }
+        console.log(errorMessage);
+    });
 });
 
 
@@ -244,36 +240,8 @@ function validateInputs() {
     // Display an error message at the top of the page
     inputErrorMessage += " First Name and Last Name must be at least 2 characters long.";  
     console.log("First name or last name error");
-  } else {
-    console.log("No First name or last name error");
   }
   return inputErrorMessage;
-}
-// Function to check the username is valid
-function validateUsername() {
-    // Setting the text box to a variable
-    let usernameInput = $('#inputUsername').val();
-    let usernameErrorMessage = "";
-    // Defining the REGEX for the username requirements
-    let usernameRegex = '^[a-zA-Z][a-zA-Z0-9-_\.]{8,20}$';
-    // Checks if the username is less than 8 characters in length
-    if(usernameInput.length < 8) {
-        // Sets the error message and light red error colour
-        usernameErrorMessage += " Username must be at least 8 characters.";
-        console.log("username error 8");
-    // Checks if the username is greater than 20 characters in length
-    }else if(usernameInput.length > 20) {
-        // Sets the error message and light red error colour
-        usernameErrorMessage += " Username must be less than 20 characters.";
-        console.log("username error 20");
-    // Checks if the username out of the REGEX bounds
-    } else if(!usernameInput.match(usernameRegex)) {
-        // Sets the error message and light red error colour
-        usernameErrorMessage += " Username cannot contain spaces.";
-        console.log("username error");
-    }
-    return usernameErrorMessage;
-
 }
 
 // Function to validate the email input value and display an error message if needed
@@ -285,9 +253,6 @@ function validateEmail() {
   if (emailValue.length < 8 || emailValue.indexOf('@') === -1) {
     // Display an error message in the error message div
     emailErrorMessage += " Email address must be at least 8 characters long and contain an @ symbol.";
-    console.log("email error");
-  } else {
-    console.log("no email error");
   }
   return emailErrorMessage;
 }
@@ -316,25 +281,22 @@ class User {
      * User Class that creates a new user from the data from the form on the Registration Page.
      * @param {string} firstName
      * @param {string} lastName
-     * @param {string} username
      * @param {string} email
      * @param {string} password
      */
-    constructor(firstName, lastName, username, email, password) {
+    constructor(firstName, lastName, email, password) {
         this.firstName = firstName;
         this.lastName = lastName;
-        this.username = username;
         this.email = email;
         this.password = password;
     }
     /**
-     * @property {function} displayUser Prints users details: user name, username, email, and password
+     * @property {function} displayUser Prints users details: user name, email, and password
      * @returns {string}
      */
     displayUser() {
-        return `Name: ${this.firstName}${this.lastName}
-        Username: ${this.username}
-        Email: ${this.email}
-        Password: ${this.password}`
+        return `Name: ${this.firstName} ${this.lastName}
+             Email: ${this.email}
+             Password: ${this.password}`
    }
 }
