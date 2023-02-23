@@ -144,6 +144,7 @@ if (document.title === 'Home') {
 //LOGIN PAGE
 // select the Login link
 let loginLink = $('#btnLogin');
+// if the link is selected then the action occurs
 if (loginLink) {
     // bind a click event handler
     loginLink.click(function (e) {
@@ -158,13 +159,13 @@ if (loginLink) {
             let usernameItem = $('<li class="nav-item navbar-text">' + username + '</li>');
             // insert the new list item after the Contact Us link
             $(usernameItem).insertAfter($('.navbar-nav .nav-link[href="./contact.html"]'));
-            // change the Login link to a Logout link
+            // gets all of the nav titles
             let navLinks = document.getElementsByClassName("nav-link");
             // Loops through all of the element in the nodelists
             for (let i = 0; i < navLinks.length; i++) {
-                // Checks the value/text of the element is "Product"
+                // Checks the value/text of the element is login/logout
                 if (navLinks[i].innerHTML == "Login" || navLinks[i].innerHTML == "Logout") {
-                    // Changes the text to be "Interests"
+                    // Changes the text to longin or logout
                     if (loginLink.text() == "Login") {
                         navLinks[i].innerHTML = "Logout";
                     } else {
@@ -190,92 +191,102 @@ let errorMessage = "";
 // Insert the error message div after the navigation bar div
 $(errorDivision).insertBefore(firstNameGroup);
 
-// TODO:FIX THE FUNCTION STATEMENT 
 // Add a submit event listener to the form
 $(document).ready(function() {
     $('#btnRegSubmit').on('click', function(e) {
-        // Prevent the default form submission
+        // Prevent the default submit action (stay on the page)
         e.preventDefault();
-        // prevent the default submit action (stay on the page)
+        // Setting the error messages and div to be blank
         let errorMessage = "";
         errorDivision.innerHTML = "";
-        e.preventDefault();
-        errorMessage += validateInputs();
+        // Validates all inputs and concatinates error messages
+        errorMessage += validateNames();
         errorMessage += validateEmail(); 
         errorMessage += validatePasswords();
+        // If the error message is not empty then it will show the error div and place the message in it
         if (errorMessage.length > 0)
         {
             errorDivision.style.display = "block";
             errorDivision.innerHTML = errorMessage;
-        }
-        else{
+        // If the error message is blank then the user is made and the information is displayed in the console
+        } else {
             errorDivision.style.display = "none";
             const registerFormUser = new User(
-                // get the first name input
+                // Get the first name input
                 $("#inputFirst").val(), 
-                // get the last name input
+                // Get the last name input
                 $("#inputLast").val(),
-                // get the email input
+                // Get the email input
                 $("#inputEmail").val(),
-                // get the password input
+                // Get the password input
                 $("#inputPassword").val()
-                )
-            // debug statement for object
-            console.log(`UserDetails: ${registerFormUser.displayUser()}`)
+            )
+            // Displays the users information to the console
+            console.log(`User Details: ${registerFormUser.displayUser()}`)
         }
-        console.log(errorMessage);
     });
 });
 
 
-// Function to validate the input values and display an error message if needed
-function validateInputs() {
- // Get references to the first name and last name input elements
+/**
+ * Function to validate the first and last name values and display an error message if needed
+ * @returns {string}
+ */ 
+function validateNames() {
+ // Get references to the first name and last name input elements, as well as getting an empty error message ready
   let inputErrorMessage = "";
   let firstNameValue = $('#inputFirst').val();
   let lastNameValue = $('#inputLast').val();
   
-  // Check if either input value is less than 2 characters long
+  // Check if either name values are less than 2 characters long
   if (firstNameValue.length < 2 || lastNameValue.length < 2) {
-    // Display an error message at the top of the page
+    // Error message to display at the top of the page
     inputErrorMessage += " First Name and Last Name must be at least 2 characters long.";  
-    console.log("First name or last name error");
   }
+  // Returns the error message string
   return inputErrorMessage;
 }
 
-// Function to validate the email input value and display an error message if needed
+/**
+ * Function to validate the email input value and display an error message if needed
+ * @returns {string}
+ */ 
 function validateEmail() {
-  // Get a reference to the email input element and the error message div
+  // Get a reference to the email input element, as well as getting an empty error message ready
   let emailValue = $('#inputEmail').val();
   let emailErrorMessage = "";
   // Check if the email value is at least 8 characters long and contains an @ symbol
   if (emailValue.length < 8 || emailValue.indexOf('@') === -1) {
-    // Display an error message in the error message div
+    // Error message to display at the top of the page
     emailErrorMessage += " Email address must be at least 8 characters long and contain an @ symbol.";
   }
+  // Returns the error message string
   return emailErrorMessage;
 }
 
-// Function to validate the input values and display an error message if needed
+/**
+ * Function to validate the input values and display an error message if needed
+ *  @returns {string}
+ */
 function validatePasswords() {
-    // Get the current input values
+    // Get the current input values for passwords, as well as getting an empty error message ready
     let passwordValue = $('#inputPassword').val();
     let confirmPasswordValue = $('#inputPassword2').val();
     let passwordsErrorMessage = "";
     // Check if either input value is less than 6 characters long
     if (passwordValue.length < 6 || confirmPasswordValue.length < 6) {
-      // Display an error message in the error message div
+      // Error message to display at the top of the page
       passwordsErrorMessage += "Passwords must be at least 6 characters long";
     } 
     // Check if the passwords match
     else if (passwordValue !== confirmPasswordValue) {
-      // Display an error message in the error message div
+      // Error message to display at the top of the page
       passwordsErrorMessage += "Passwords do not match";
     }
+    // Returns the error message string
     return passwordsErrorMessage;
 }
-
+//USED FROM ICE 4!!
 class User {
     /**
      * User Class that creates a new user from the data from the form on the Registration Page.
