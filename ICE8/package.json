@@ -1,0 +1,20 @@
+{
+	"name": "ice8",
+	"version": "1.0.0",
+	"main": "app.js",
+	"scripts": {
+		"test": "echo \"Error: no test specified\" && exit 1",
+		"start": "nodemon app.js",
+    "serve": "nodemon server.js"
+	},
+	"author": "amelia eric-markovic",
+	"license": "ISC",
+	"description": "",
+	"dependencies": {
+		"bootstrap": "^5.2.3",
+		"express": "^4.18.2",
+		"express-handlebars": "^7.0.2",
+		"handlebars": "^4.7.7",
+		"nodemon": "^2.0.21"
+	}
+}
