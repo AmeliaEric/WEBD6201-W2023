@@ -21,12 +21,20 @@ app.use((req, res, next) => {
 
 // make the index route
 app.get('/', (req, res) => {
-    res.render('home');
+    const pageTitle = "HOME PAGE";
+    const pageBody = 'This is my new title for the home page.';
+    res.render('home', {
+        pageTitle: pageTitle,
+        pageBody: pageBody
+    });
 });
 
 // add about route
 app.get('/about', (req, res) => {
-    res.render('about');
+    const pageTitle = "ABOUT PAGE"
+    res.render('about', {
+        pageTitle: pageTitle
+    });
 });
 
 // run server
