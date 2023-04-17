@@ -1,0 +1,16 @@
+{{#each animals}}
+    <div class="card card-body mb-2">
+        <h4>{{Given_Name}}</h4>
+        <p>{{Zoo}}</p>
+        <p>{{Scientific_Name}}</p>
+        <p>{{Common_Name}}</p>
+        <p>{{Given_Name}}</p>
+        <p>{{Gender}}</p>
+        <p>{{DOB}}</p>
+        <p>{{Age}}</p>
+        <p>{{isTransportable}}</p>
+        <a class="btn btn-dark btn-block" href="/animals/edit-animal/{{_id}}">Edit Animal</a>
+    </div>
+{{else}}
+    <p>No Animals in the system</p>
+{{/each}}
