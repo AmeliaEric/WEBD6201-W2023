@@ -6,6 +6,7 @@ const AnimalSchema = new Schema({
         type: String,
         required: true
     },
+    
     Scientific_Name: {
         type: String,
         required: true

@@ -1,17 +1,17 @@
 <div class='row justify-content-center'>
 	<div class='col-md-8'>
-		<h2>NODE.JS MVC</h2>
+		<h2>Add an Animal to the Database</h2>
 		<div class='card'>
 			<div class='card-header'>Register</div>
 			<div class='card-body'>
 
-				<form class='form-horizontal' method='post' action='/form'>
+				<form class='form-horizontal' method='post' action='/animals/entry-form'>
 
 					<div class='form-group'>
 						<label
-							for='fullName'
+							for='Zoo'
 							class='cols-sm-2 control-label'
-						>Your Name</label>
+						>Home Zoo</label>
 						<div class='cols-sm-10'>
 							<div class='input-group'>
 								<span class='input-group-addon'><i
@@ -21,16 +21,16 @@
 								<input
 									type='text'
 									class='form-control'
-									name='fullName'
-									id='fullName'
-									placeholder='Enter your Name'
+									name='Zoo'
+									id='Zoo'
+									placeholder='Enter the Home Zoo'
 								/>
 							</div>
 						</div>
 					</div>
 					<div class='form-group'>
-						<label for='email' class='cols-sm-2 control-label'>Your
-							Email</label>
+						<label for='Scientific_Name' class='cols-sm-2 control-label'>
+							Scientific Name</label>
 						<div class='cols-sm-10'>
 							<div class='input-group'>
 								<span class='input-group-addon'><i
@@ -40,9 +40,9 @@
 								<input
 									type='text'
 									class='form-control'
-									name='email'
-									id='email'
-									placeholder='Enter your Email'
+									name='Scientific_Name'
+									id='Scientific_Name'
+									placeholder='Enter the Scientific Name'
 								/>
 							</div>
 						</div>
@@ -50,9 +50,9 @@
 
 					<div class='form-group'>
 						<label
-							for='password'
+							for='Common_Name'
 							class='cols-sm-2 control-label'
-						>Password</label>
+						>Common Name</label>
 						<div class='cols-sm-10'>
 							<div class='input-group'>
 								<span class='input-group-addon'><i
@@ -60,20 +60,20 @@
 										aria-hidden='true'
 									></i></span>
 								<input
-									type='password'
+									type='text'
 									class='form-control'
-									name='password'
-									id='password'
-									placeholder='Enter your Password'
+									name='Common_Name'
+									id='Common_Name'
+									placeholder='Enter the Common Name'
 								/>
 							</div>
 						</div>
 					</div>
 					<div class='form-group'>
 						<label
-							for='confirm'
+							for='Given_Name'
 							class='cols-sm-2 control-label'
-						>Confirm Password</label>
+						>Given Name</label>
 						<div class='cols-sm-10'>
 							<div class='input-group'>
 								<span class='input-group-addon'><i
@@ -81,23 +81,105 @@
 										aria-hidden='true'
 									></i></span>
 								<input
-									type='password'
+									type='text'
 									class='form-control'
-									name='confirm'
-									id='confirm'
-									placeholder='Confirm your Password'
+									name='Given_Name'
+									id='Given_Name'
+									placeholder='Enter the Given Name'
 								/>
 							</div>
 						</div>
 					</div>
+                    <div class='form-group'>
+						<label
+							for='Gender'
+							class='cols-sm-2 control-label'
+						>Gender</label>
+						<div class='cols-sm-10'>
+							<div class='input-group'>
+								<span class='input-group-addon'><i
+										class='fa fa-lock fa-lg'
+										aria-hidden='true'
+									></i></span>
+								<input
+									type='text'
+									class='form-control'
+									name='Gender'
+									id='Gender'
+									placeholder='Enter the Gender'
+								/>
+							</div>
+						</div>
+					</div>
+                    <div class='form-group'>
+						<label
+							for='DOB'
+							class='cols-sm-2 control-label'
+						>Date of Birth (yyyy-mm-dd)</label>
+						<div class='cols-sm-10'>
+							<div class='input-group'>
+								<span class='input-group-addon'><i
+										class='fa fa-lock fa-lg'
+										aria-hidden='true'
+									></i></span>
+								<input
+									type='text'
+									class='form-control'
+									name='DOB'
+									id='DOB'
+									placeholder='Enter the Date of Birth'
+								/>
+							</div>
+						</div>
+					</div>
+                    <div class='form-group'>
+						<label
+							for='Age'
+							class='cols-sm-2 control-label'
+						>Age</label>
+						<div class='cols-sm-10'>
+							<div class='input-group'>
+								<span class='input-group-addon'><i
+										class='fa fa-lock fa-lg'
+										aria-hidden='true'
+									></i></span>
+								<input
+									type='Number'
+									class='form-control'
+									name='Age'
+									id='Age'
+									placeholder='Enter the Age'
+								/>
+							</div>
+						</div>
+					</div>
+                    <div class='form-group'>
+                        <label for='isTransportable' class='cols-sm-2 control-label'>Is Transportable</label>
+                        <div class='cols-sm-10'>
+                            <div class='radio'>
+                            <label>
+                                <input type='radio' name='isTransportable' id="Available" value="true"/>
+                                Available
+                            </label>
+                            </div>
+                            <div class='radio'>
+                            <label>
+                                <input type='radio' name='isTransportable' id="Unavailable" value="false" />
+                                Unavailable
+                            </label>
+                            </div>
+                        </div>
+                    </div>
+
 					<div class='form-group'>
 						<button
 							type='submit'
 							class='btn btn-primary btn-lg btn-block login-button'
-						>Register</button>
-					</div>
-					<div class='login-register'>
-						<a href='/login'>Login</a>
+						>Add Animal to Database</button>
+                        <button
+							type='reset'
+							class='btn btn-primary btn-lg btn-block login-button'
+						>Reset Form</button>
 					</div>
 				</form>
 			</div>

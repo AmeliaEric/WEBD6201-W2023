@@ -14,6 +14,6 @@ router.get('/animals/all-animals', getAllAnimals);
 router.get('/animals/edit-animal/:id', editAnimals);
 router.post('/animals/edit-animal/:id', updateAnimals);
 
-router.post('/delete-animal/:id', deleteAnimals);
+router.post('/animals/delete-animal/:id', deleteAnimals);
 
 module.exports = router;

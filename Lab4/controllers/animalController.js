@@ -28,7 +28,7 @@ const formSubmission = (req, res) => {
             console.log("Found Animal! Animal Already Exists");
             const pageTitle = "Already Registered";
             message = "Your Animal are already registered.";
-            res.render("entry-form", {
+            res.render("animals/entry-form", {
                 pageTitle: pageTitle,
                 alreadyRegistered: true,
                 message: message,
@@ -44,13 +44,13 @@ const formSubmission = (req, res) => {
                 Age,
                 isTransportable,
             });
-
+            console.log("Hi I passed");
             newAnimal
                 .save()
                 .then(() => {
                     const pageTitle = "New Animal Registered";
                     const registeredMessage = "Animal has just been registered";
-                    res.render("entry-from", {
+                    res.render("animals/entry-form", {
                         pageTitle: pageTitle,
                         registeredMessage: registeredMessage,
                         alreadyRegistered: false,
@@ -81,20 +81,27 @@ const editAnimals = (req, res) => {
     Animal.findOne({_id: id})
         .lean()
         .then((animals) => {
-            res.render('edit-animal', {
+            res.render('animals/edit-animal', {
                 animals: animals,
                 id: id,
-                pageTitle: 'Edit User'
+                pageTitle: 'Edit Animal'
             });
         });
 };
 
 const updateAnimals = async (req, res) => {
-    const update = {fullName: req.body.fullName, email: req.body.email};
+    const update = {Zoo: req.body.Zoo, 
+        Scientific_Name: req.body.Scientific_Name, 
+        Common_Name: req.body.Common_Name, 
+        Given_Name: req.body.Given_Name,
+        Gender: req.body.Gender,
+        DOB: req.body.DOB,
+        Age: req.body.Age,
+        isTransportable: req.body.isTransportable};
     const id = req.params.id;
     const filter = {_id: id};
     let doc = await Animal.findOneAndUpdate(filter, update, {new: true});
-    res.redirect('/all-animals');
+    res.redirect('/animals/all-animals');
 };
 
 const deleteAnimals = async (req, res) => {
@@ -102,7 +109,7 @@ const deleteAnimals = async (req, res) => {
     const id = req.params.id;
     const filter = {_id: id};
     let deletedCount = await Animal.deleteOne(filter);
-    res.redirect('/all-animals');
+    res.redirect('/animals/all-animals');
 };
 
 module.exports = {
