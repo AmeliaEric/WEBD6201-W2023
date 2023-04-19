@@ -1,3 +1,4 @@
+<!-- Form to add animal details to database -->
 <div class='row justify-content-center'>
 	<div class='col-md-8'>
 		<h2>Add an Animal to the Database</h2>
@@ -6,7 +7,7 @@
 			<div class='card-body'>
 
 				<form class='form-horizontal' method='post' action='/animals/entry-form'>
-
+                    <!-- Home Zoo input field -->
 					<div class='form-group'>
 						<label
 							for='Zoo'
@@ -28,6 +29,7 @@
 							</div>
 						</div>
 					</div>
+                    <!-- Scientific Name input field -->
 					<div class='form-group'>
 						<label for='Scientific_Name' class='cols-sm-2 control-label'>
 							Scientific Name</label>
@@ -47,7 +49,7 @@
 							</div>
 						</div>
 					</div>
-
+                    <!-- Common Name input field -->
 					<div class='form-group'>
 						<label
 							for='Common_Name'
@@ -69,6 +71,7 @@
 							</div>
 						</div>
 					</div>
+                    <!-- Given Name input field -->
 					<div class='form-group'>
 						<label
 							for='Given_Name'
@@ -90,6 +93,7 @@
 							</div>
 						</div>
 					</div>
+                    <!-- Gender input field -->
                     <div class='form-group'>
 						<label
 							for='Gender'
@@ -111,6 +115,7 @@
 							</div>
 						</div>
 					</div>
+                    <!-- DOB input field -->
                     <div class='form-group'>
 						<label
 							for='DOB'
@@ -132,6 +137,7 @@
 							</div>
 						</div>
 					</div>
+                    <!-- Age input field -->
                     <div class='form-group'>
 						<label
 							for='Age'
@@ -153,6 +159,7 @@
 							</div>
 						</div>
 					</div>
+                    <!-- isTransportable input field -->
                     <div class='form-group'>
                         <label for='isTransportable' class='cols-sm-2 control-label'>Is Transportable</label>
                         <div class='cols-sm-10'>
@@ -170,12 +177,13 @@
                             </div>
                         </div>
                     </div>
-
+                    <!-- Submit form button -->
 					<div class='form-group'>
 						<button
 							type='submit'
 							class='btn btn-primary btn-lg btn-block login-button'
 						>Add Animal to Database</button>
+                        <!-- Reset form button -->
                         <button
 							type='reset'
 							class='btn btn-primary btn-lg btn-block login-button'

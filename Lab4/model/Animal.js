@@ -1,6 +1,8 @@
+// Require the Mongoose and making the mongoose schema.
 const mongoose = require ("mongoose")
 const Schema = mongoose.Schema;
 
+// Making the new animal schema and the information it will store.
 const AnimalSchema = new Schema({
     Zoo: {
         type: String,
@@ -43,5 +45,6 @@ const AnimalSchema = new Schema({
     }
 })
 
+// Assigning the model and exporting it.
 const Animal = mongoose.model("Animal", AnimalSchema)
 module.exports = Animal;

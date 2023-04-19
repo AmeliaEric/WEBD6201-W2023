@@ -10,12 +10,16 @@
 			crossorigin='anonymous'
 		/>
 		<link rel='stylesheet' type='text/css' href='/style.css' />
+		<!-- This sets the title of the page to the value of the _title variable -->
 		<title>{{> _title}}</title>
 	</head>
 	<body>
+		<!-- This includes a navigation bar that is defined elsewhere -->
 		{{>_navbar}}
     	<div class="container">
+			<!-- This displays the value of the _title variable as an h3 heading -->
 			<h3>{{> _title}}</h3>
+			<!-- This includes the body of the page, which is defined elsewhere -->
         	{{{body}}}
     	</div>
 	</body>

@@ -1,33 +1,42 @@
+<!-- This form is used for editing animal information. -->
 <form action='/animals/edit-animal/{{id}}' method='post'>
+    <!-- A group of elements that allows the user to input the home zoo of the animal. -->
     <div class="form-group">
         <label for="Zoo">Home Zoo</label>
         <input type="text" name="Zoo" id="Zoo" class="form-control" value="{{animals.Zoo}}" required>
     </div>
+     <!-- A group of elements that allows the user to input the scientific name of the animal. -->
     <div class="form-group">
         <label for="Scientific_Name">Scientific Name</label>
         <input type="text" name="Scientific_Name" id="Scientific_Name" class="form-control" value="{{animals.Scientific_Name}}" required>
     </div>
+     <!-- A group of elements that allows the user to input the common name of the animal. -->
     <div class="form-group">
         <label for="Common_Name">Common Name</label>
         <input type="text" name="Common_Name" id="Common_Name" class="form-control" value="{{animals.Common_Name}}" required>
     </div>
+    <!-- A group of elements that allows the user to input the given name of the animal. -->
     <div class="form-group">
         <label for="Given_Name">Given Name</label>
         <input type="text" name="Given_Name" id="Given_Name" class="form-control" value="{{animals.Given_Name}}" required>
     </div>
+    <!-- A group of elements that allows the user to input the gender of the animal. -->
     <div class="form-group">
         <label for="Gender">Gender</label>
         <input type="text" name="Gender" id="Gender" class="form-control" value="{{animals.Gender}}" required>
     </div>
+    <!-- A group of elements that allows the user to input the date of birth of the animal. -->
     <div>
         <label for="DOB">Date of Birth (yyyy-mm-dd)</label>
         <input type="date" id="DOB" name="DOB" value="{{animals.DOB}}">
     </div>
+    <!-- A group of elements that allows the user to input the age of the animal. -->
     <div class="form-group">
         <label for="Age">Age</label>
         <input type="text" name="Age" id="Age" class="form-control" value="{{animals.Age}}" required>
     </div>
     <label>Is Transportable</label>
+    <!-- A group of elements that allows the user to select whether the animal is transportable or not. -->
     <div>
         <input class="form-check-input" type="radio" name="Transportable" id="Available" value="true" {{#if animals.isTransportable}}checked{{/if}}>
         <label class="form-check-label" for="Available">
@@ -40,9 +49,10 @@
             Unavailable
         </label>
     </div>
+    <!-- A button that submits the form data. -->
     <button type="submit" class="btn btn-primary">Submit</button>
 </form>
-
+<!-- This form is used for deleting an animal record. -->
 <form action='/animals/delete-animal/{{id}}' method='post'>
     <input type="hidden" name="hiddenInput" />
     <button type='submit'>Delete Record</button>
