@@ -1,3 +1,9 @@
+/**
+ * Name: Amelia Eric-Markovic
+ * Date: April 19th, 2023
+ * StudentID: 100818139
+ */
+
 // Importing required modules and packages
 const express = require('express');
 const exphbs = require('express-handlebars');
